@@ -1,5 +1,6 @@
+var fs = require('fs');
 var githubhook = require('githubhook');
-var github = githubhook({port: 8989});
+var github = githubhook({port: 8989, secret: fs.readFile(process.env['HOME'] + '/.hook')});
 var sys = require('sys');
 var exec = require('child_process').exec;
 function puts(error, stdout, stderr) {
