@@ -17,6 +17,7 @@ github.listen();
 github.on('*', function (event, repo, ref, data) {
     if (repo === 'caffeinery.github.io') {
         console.log(data);
+        exec('git pull', puts)
         exec('make html', puts)
         exec('git add -A', puts)
         exec('git commit -m \'Rebuild documentation.\'', puts)
