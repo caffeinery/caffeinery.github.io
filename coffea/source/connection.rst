@@ -1,5 +1,5 @@
-Core API
-========
+Connection API
+==============
 
 
 .. class:: Client(info) 
