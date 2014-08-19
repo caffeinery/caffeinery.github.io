@@ -8,7 +8,7 @@ Events are applied using the following example (basically standard NodeJS EventE
 
 		client.on('EVENT', // `EVENT` being any of the events listed in the documentation.
 		  function(event) { // callback function, called when event is fired
-		    console.log('Something happened!')
+		    console.log('Something happened!');
 		  });
 
 
