@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Core API &mdash; coffea 0.3.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="coffea 0.3.4 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to coffea’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to coffea’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">coffea 0.3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="core-api">
+<h1>Core API<a class="headerlink" href="#core-api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Client">
+<em class="property">class </em><tt class="descname">Client</tt><big>(</big><em>info</em><big>)</big><a class="headerlink" href="#Client" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>info</strong> (<em>object</em>) &#8211; details for IRC connection</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Initialise a server connection using the <tt class="docutils literal"><span class="pre">info</span></tt> parameter. <tt class="docutils literal"><span class="pre">info</span></tt> can be a javascript object representing server details or an array of multiple server details.</p>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">Client</span><span class="p">({</span>
+        <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;freenode&#39;</span><span class="p">,</span> <span class="c1">// Optional</span>
+        <span class="s1">&#39;host&#39;</span><span class="o">:</span> <span class="s1">&#39;chat.freenode.net&#39;</span><span class="p">,</span> <span class="c1">// Required</span>
+        <span class="s1">&#39;port&#39;</span><span class="o">:</span> <span class="mi">6697</span><span class="p">,</span> <span class="c1">// Optional</span>
+        <span class="s1">&#39;ssl&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Optional</span>
+        <span class="s1">&#39;nick&#39;</span><span class="o">:</span> <span class="s1">&#39;nickname&#39;</span><span class="p">,</span> <span class="c1">// Required</span>
+        <span class="s1">&#39;username&#39;</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// Optional</span>
+        <span class="s1">&#39;realname&#39;</span><span class="o">:</span> <span class="s1">&#39;Testing Robot&#39;</span> <span class="c1">// Optional</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="add">
+<tt class="descname">add</tt><big>(</big><em>info</em><big>)</big><a class="headerlink" href="#add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>info</strong> (<em>object</em>) &#8211; Details for new connection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The stream_id.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Add another network to an existing client, using the <tt class="docutils literal"><span class="pre">info</span></tt> parameter (as described at <a class="reference internal" href="#Client" title="Client"><tt class="xref js js-class docutils literal"><span class="pre">Client()</span></tt></a>), since the API supports multiple servers, more than one <tt class="docutils literal"><span class="pre">add</span></tt> calls can be specified throughout your program.</p>
+<p>Multi-server example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">client</span><span class="p">.</span><span class="nx">add</span><span class="p">([{</span> <span class="c1">// existing `Client` object</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;chat.freenode.net&#39;</span><span class="p">,</span> <span class="c1">// required</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;freenode&#39;</span><span class="p">,</span>  <span class="c1">// optional, but aids in identification, when referenced later in the program.</span>
+    <span class="nx">nick</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// required</span>
+    <span class="nx">ssl</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// optional</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// optional</span>
+    <span class="s1">&#39;realname&#39;</span><span class="o">:</span> <span class="s1">&#39;Testing Robot&#39;</span> <span class="c1">// optional</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;chat.freenode.net&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;freenode&#39;</span><span class="p">,</span>
+    <span class="nx">nick</span><span class="o">:</span> <span class="s1">&#39;test2&#39;</span><span class="p">,</span>
+    <span class="nx">ssl</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;realname&#39;</span><span class="o">:</span> <span class="s1">&#39;Testing Robot&#39;</span>
+    <span class="p">}</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>Single-server example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">client</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span> <span class="c1">// existing `Client` object</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;chat.freenode.net&#39;</span><span class="p">,</span> <span class="c1">// required</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;freenode&#39;</span><span class="p">,</span>  <span class="c1">// optional, but aids in identification, when referenced later in the program.</span>
+  <span class="nx">nick</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// required</span>
+  <span class="nx">ssl</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// optional</span>
+  <span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// optional</span>
+  <span class="s1">&#39;realname&#39;</span><span class="o">:</span> <span class="s1">&#39;Testing Robot&#39;</span> <span class="c1">// optional&#39;</span>
+  <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to coffea&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to coffea’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">coffea 0.3.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, -.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
