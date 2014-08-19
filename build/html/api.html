@@ -67,13 +67,13 @@
 <p>Initialise a server connection using the <tt class="docutils literal"><span class="pre">info</span></tt> parameter. <tt class="docutils literal"><span class="pre">info</span></tt> can be a javascript object representing server details or an array of multiple server details.</p>
 <p>Example:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">Client</span><span class="p">({</span>
-        <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;freenode&#39;</span><span class="p">,</span> <span class="c1">// Optional</span>
-        <span class="s1">&#39;host&#39;</span><span class="o">:</span> <span class="s1">&#39;chat.freenode.net&#39;</span><span class="p">,</span> <span class="c1">// Required</span>
-        <span class="s1">&#39;port&#39;</span><span class="o">:</span> <span class="mi">6697</span><span class="p">,</span> <span class="c1">// Optional</span>
-        <span class="s1">&#39;ssl&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Optional</span>
-        <span class="s1">&#39;nick&#39;</span><span class="o">:</span> <span class="s1">&#39;nickname&#39;</span><span class="p">,</span> <span class="c1">// Required</span>
-        <span class="s1">&#39;username&#39;</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// Optional</span>
-        <span class="s1">&#39;realname&#39;</span><span class="o">:</span> <span class="s1">&#39;Testing Robot&#39;</span> <span class="c1">// Optional</span>
+    <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;freenode&#39;</span><span class="p">,</span> <span class="c1">// Optional</span>
+    <span class="s1">&#39;host&#39;</span><span class="o">:</span> <span class="s1">&#39;chat.freenode.net&#39;</span><span class="p">,</span> <span class="c1">// Required</span>
+    <span class="s1">&#39;port&#39;</span><span class="o">:</span> <span class="mi">6697</span><span class="p">,</span> <span class="c1">// Optional</span>
+    <span class="s1">&#39;ssl&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Optional</span>
+    <span class="s1">&#39;nick&#39;</span><span class="o">:</span> <span class="s1">&#39;nickname&#39;</span><span class="p">,</span> <span class="c1">// Required</span>
+    <span class="s1">&#39;username&#39;</span><span class="o">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="c1">// Optional</span>
+    <span class="s1">&#39;realname&#39;</span><span class="o">:</span> <span class="s1">&#39;Testing Robot&#39;</span> <span class="c1">// Optional</span>
 <span class="p">});</span>
 </pre></div>
 </div>
@@ -128,6 +128,29 @@
   <span class="p">})</span>
 </pre></div>
 </div>
+<dl class="function">
+<dt id="write">
+<tt class="descname">write</tt><big>(</big><em>str</em>, <em>network</em>, <em>fn</em><big>)</big><a class="headerlink" href="#write" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>str</strong> (<em>string</em>) &#8211; The string to be written.</li>
+<li><strong>network</strong> (<em>object</em>) &#8211; The network that the string shall be written to.</li>
+<li><strong>fn</strong> (<em>function</em>) &#8211; The callback function to be called when the <tt class="docutils literal"><span class="pre">write</span></tt> call has been finished.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Returns string stream_id:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">The stream ID from the call.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Writes raw data (<tt class="docutils literal"><span class="pre">str</span></tt>), to <tt class="docutils literal"><span class="pre">network</span></tt>, when finished, calls <tt class="docutils literal"><span class="pre">fn</span></tt>.</p>
 </div>
 
 

@@ -13,13 +13,13 @@ Example:
 .. code-block:: javascript
 
     var client = Client({
-            'name': 'freenode', // Optional
-            'host': 'chat.freenode.net', // Required
-            'port': 6697, // Optional
-            'ssl': true, // Optional
-            'nick': 'nickname', // Required
-            'username': 'test', // Optional
-            'realname': 'Testing Robot' // Optional
+        'name': 'freenode', // Optional
+        'host': 'chat.freenode.net', // Required
+        'port': 6697, // Optional
+        'ssl': true, // Optional
+        'nick': 'nickname', // Required
+        'username': 'test', // Optional
+        'realname': 'Testing Robot' // Optional
     });
 
 .. function:: add(info)
@@ -63,3 +63,18 @@ Single-server example:
       username: 'test', // optional
       'realname': 'Testing Robot' // optional'
       })
+
+
+.. function:: write(str, network, fn)
+              
+              :param string str: The string to be written.
+              :param object network: The network that the string shall be written to.
+              :param function fn: The callback function to be called when the ``write`` call has been finished.
+              :returns string stream_id: The stream ID from the call.
+                                         
+
+Writes raw data (``str``), to ``network``, when finished, calls ``fn``.
+                                  
+
+
+
