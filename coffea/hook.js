@@ -21,7 +21,7 @@ github.on('*', function (event, repo, ref, data) {
         exec('make html', puts);
         exec('git add -A', puts);
         exec('git commit -m \'Rebuild documentation.\'', puts);
-        exec('git push', puts);
+        exec('git push origin master', puts);
     };
 });
 
